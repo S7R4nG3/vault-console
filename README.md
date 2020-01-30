@@ -1,10 +1,10 @@
 ## Testing Vault/Consul Cluster
 --------------------------------
 
-This compose file and setup creates a single-node HashiCorp Vault cluster with a 3-node Consul cluster as a backend, as well as a single-node Vault "standby" or Performance Replica.
+This compose file and setup creates a single-node HashiCorp Vault cluster with a 3-node Consul cluster as a backend, as well as a single-node Vault "standby" for High Availability.
 
 
-I built this out to test out the different DR scenarios that could occur in a Vault cluster to evaluate how to handle and recover.
+I built this out to test out the different DR scenarios that could occur within a Vault cluster to evaluate how to handle and recover.
 
 
 Obviously this is not the only use case for this setup, so feel free to expand and use it however you need.
@@ -29,15 +29,8 @@ The containers will come online and be accessible on your local machine at the f
 
 
             Master Vault: http://localhost:8200
-            Perf-Replica Vault: http://localhost:8201
+            Standby Vault: http://localhost:8201
             Consul: http://localhost:8500
-
-
-Once the cluster is up and running, you'll need to join the 2 Consul worker nodes to the primary Consul node using the commands:
-
-
-            docker-compose exec consul-worker-1 consul join consul && \
-            docker-compose exec consul-worker-2 consul join consul
 
 
 
