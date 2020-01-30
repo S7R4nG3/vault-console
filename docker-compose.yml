@@ -10,24 +10,24 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - ./vault/config:/vault/config
-      - ./vault/data:/vault/data
+      - ./vault/config/:/vault/config/
+      - ./vault/data/vault-1/:/vault/data/
     environment:
       VAULT_ADDR: http://127.0.0.1:8200
 
   vault-2:
     image: vault:latest
+    ports:
+      - 8201:8200
     depends_on:
       - consul
       - vault-1
-    ports:
-      - 8201:8200
     command: vault server -config=/vault/config/config.json
     cap_add:
       - IPC_LOCK
     volumes:
-      - ./vault/config:/vault/config
-      - ./vault/data:/vault/data
+      - ./vault/config/:/vault/config/
+      - ./vault/data/vault-2/:/vault/data/
     environment:
       VAULT_ADDR: http://127.0.0.1:8200
 
@@ -37,7 +37,7 @@ services:
       - 8500:8500
     command: consul agent -server -bind 0.0.0.0 -client 0.0.0.0 -data-dir=/consul/data -config-file=/consul/config/config.json -bootstrap-expect=1
     volumes:
-      - ./consul/data-server:/consul/data
+      - ./consul/data/server:/consul/data
       - ./consul/config:/consul/config
 
   consul-worker-1:
@@ -46,7 +46,7 @@ services:
       - consul
     command: consul agent -server -join consul -config-file=/consul/config/config.json
     volumes:
-      - ./consul/data-worker-1:/consul/data
+      - ./consul/data/worker-1:/consul/data
       - ./consul/config:/consul/config
     
   consul-worker-2:
@@ -55,5 +55,5 @@ services:
       - consul
     command: consul agent -server -join consul -config-file=/consul/config/config.json
     volumes:
-      - ./consul/data-worker-2:/consul/data
+      - ./consul/data/worker-2:/consul/data
       - ./consul/config:/consul/config

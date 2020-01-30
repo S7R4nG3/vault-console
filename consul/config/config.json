@@ -1,5 +1,5 @@
 {
-    "datacenter": "TestCluster",
+    "datacenter": "testcluster",
     "data_dir": "/consul/data",
     "log_level": "DEBUG",
     "server": true,

@@ -1,9 +1,6 @@
-/consul/data-server/*
-/consul/data-worker-1/*
-/consul/data-worker-2/*
+/consul/data/*
 /vault/data/*
 /provisioning/*.tf
-/provisioning/.terraform*
-/provisioniong/.*tfstate*
+/provisioning/.terraform/*
+/provisioning/*.tfstate.*
 *.DS_Store*
-
