@@ -37,6 +37,7 @@ services:
       - 8500:8500
     command: consul agent -server -bind 0.0.0.0 -client 0.0.0.0 -data-dir=/consul/data -config-file=/consul/config/config.json -bootstrap-expect=1
     volumes:
+      - ./consul/data-server:/consul/data
       - ./consul/config:/consul/config
 
   consul-worker-1:
@@ -45,6 +46,7 @@ services:
       - consul
     command: consul agent -server -join consul -config-file=/consul/config/config.json
     volumes:
+      - ./consul/data-worker-1:/consul/data
       - ./consul/config:/consul/config
     
   consul-worker-2:
@@ -53,4 +55,5 @@ services:
       - consul
     command: consul agent -server -join consul -config-file=/consul/config/config.json
     volumes:
+      - ./consul/data-worker-2:/consul/data
       - ./consul/config:/consul/config
