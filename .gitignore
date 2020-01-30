@@ -1,0 +1,7 @@
+/consul/data-server/*
+/consul/data-worker-1/*
+/consul/data-worker-2/*
+/vault/data/*
+/provisioning/*
+*.DS_Store*
+
