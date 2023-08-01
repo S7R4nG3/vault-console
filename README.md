@@ -47,3 +47,11 @@ Next you'll be given the *Master Key* as well as an initial *Root Token* that yo
 
 
 To enable the Performance Replica, you will also need to provide the *Master Key* via command-line or the UI to unseal it as well and enable replication.
+
+
+### **Vault Configuration**
+------------------
+
+Vault can easily be configured using Terraform, and as such I've included a ```./provisioning``` directory thats to be used to store all of your TF configuration files.
+
+Great starting points for Terraforming your config include **authentication backends**, enabling any backends your cluster is intended to use. **Policies** are also the best use-case I know of for Terraforming your config, it allows you to define and enforce your policies as code that can be updated dynamically.
