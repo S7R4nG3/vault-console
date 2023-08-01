@@ -2,3 +2,4 @@
 /provisioning/.terraform/*
 /provisioning/*.tfstate.*
 *.DS_Store*
+consul/data*
